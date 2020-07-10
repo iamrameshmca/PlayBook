@@ -1,0 +1,16 @@
+ ---
+- name: this playbook install pacakges
+  hosts: webservers 
+  become: true
+  tasks:
+  - name: install package
+    yum: 
+    #      name: ['git', 'curl', 'nslookup', 'telnet', 'gzip'] 
+      name: "{{ item }}"
+      state: installed
+    with_items: 
+      - git
+      - curl
+      - nslookup
+      - telnet
+      - gzip
